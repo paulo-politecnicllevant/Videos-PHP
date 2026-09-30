@@ -1,28 +1,17 @@
 <?php
 
-$books = [
-    [
-        'name' => 'Do Androids Dream of Electric Sheep',
-        'author' => 'Philip K. Dick',
-        'releaseYear' => '1968',
-        'purchaseUrl' => 'http://example.com'
-    ],
-    [
-        'name' => 'Project Hail Mary',
-        'author' => 'Andy Weir',
-        'releaseYear' => '2021',
-        'purchaseUrl' => 'http://example.com'
-    ],
-    [
-        'name' => 'The Martirian',
-        'author' => 'Andy Weir',
-        'releaseYear' => '2011',
-        'purchaseUrl' => 'http://example.com'
-    ],
+
+$business = [
+    'name' => 'Laracast',
+    'cost' => 15,
+    'categories' => ["Testing", "PHP", "JavaScript"]
 ];
 
-$filteredBooks = array_filter($books, function($book){
-    return $book['author'] === 'Andy Weir';
-});
+function register($user){
+    //Create the user record in the db
+    //Log them in
+    //Send a welcome email
+    //Redirect to their new dashboard
+}
 
 require "index.view.php";
