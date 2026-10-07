@@ -7,6 +7,9 @@ services:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: php_videos
 
+    volumes:
+      - db_data:/var/lib/mysql
+
     ports:
       - "3306:3306"
 
@@ -30,3 +33,6 @@ services:
       - "80:80"
     depends_on:
       - db
+
+volumes:
+  db_data:
