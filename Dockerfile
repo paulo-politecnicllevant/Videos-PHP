@@ -10,3 +10,8 @@ RUN apt-get update && apt-get install -y \
 # Activar mod_rewrite y permitir .htaccess
 RUN a2enmod rewrite
 RUN sed -i 's|AllowOverride None|AllowOverride All|g' /etc/apache2/apache2.conf
+
+# Cambiar el directorio raíz de Apache a public
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
