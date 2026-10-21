@@ -1,6 +1,8 @@
 <?php
 
-//Connect to the database, and execute a query
+namespace Core;
+
+use PDO;
 
 class Database
 {
@@ -9,11 +11,10 @@ class Database
 
     public function __construct($config, $username = 'root', $password = '1234')
     {
-
         $dsn = 'mysql:' . http_build_query($config, '', ';'); //example.com?host=localhost$port=3306&dbname=myapp
 
         $this->connection = new PDO($dsn, $username, $password, [
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
         ]);
     }
 
