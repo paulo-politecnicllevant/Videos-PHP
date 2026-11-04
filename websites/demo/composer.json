@@ -1,0 +1,16 @@
+{
+    "name": "alumati/demo",
+    "authors": [
+        {
+            "name": "paulo-politecnicllevant",
+            "email": "pescanellas925@alumnes.politecnicllevant.cat"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    }
+}
