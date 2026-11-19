@@ -87,4 +87,38 @@ class NotesController
             'note' => $note
         ]);
     }
+
+    public function update()
+    {
+        $currentUserId = 1;
+
+        $note = $this->db()->query('select * from notes where id = :id', [
+            'id' => $_POST['id']
+        ])->findOrFail();
+
+        //TODO: acordarse de esto
+        //authorize($note['user_id'] === $currentUserId);
+
+        $errors = [];
+
+        if (! Validator::string($_POST['body'], 1, 1000)) {
+            $errors['body'] = 'A body of no more than 1,000 characters is required.';
+        }
+
+        if (count($errors)) {
+            return view('notes/edit.view.php', [
+                'heading' => 'Edit Note',
+                'errors' => $errors,
+                'note' => $note
+            ]);
+        }
+
+        $this->db()->query('update notes set body = :body where id = :id', [
+            'id' => $_POST['id'],
+            'body' => $_POST['body']
+        ]);
+
+        header('location: /notes');
+        die();
+    }
 }
