@@ -34,8 +34,7 @@ class NoteDaoImpl implements NoteDaoInterface
     public function create($body, $userId)
     {
         $this->db->query(
-            'INSERT INTO notes(body, user_id) VALUES(:body, :user_id)',
-            [
+            'INSERT INTO notes(body, user_id) VALUES(:body, :user_id)', [
                 'body' => $body,
                 'user_id' => $userId
             ]
@@ -45,8 +44,7 @@ class NoteDaoImpl implements NoteDaoInterface
     public function update($id, $userId, $body)
     {
         $this->db->query(
-            'UPDATE notes SET body = :body WHERE id = :id AND user_id = :user_id',
-            [
+            'UPDATE notes SET body = :body WHERE id = :id AND user_id = :user_id', [
                 'id' => $id,
                 'user_id' => $userId,
                 'body' => $body
@@ -56,7 +54,12 @@ class NoteDaoImpl implements NoteDaoInterface
 
     public function delete($id, $userId)
     {
-
+        $this->db->query(
+            'DELETE FROM notes WHERE id = :id AND user_id = :user_id', [
+                'id' => $id,
+                'user_id' => $userId
+            ]
+        );
     }
 }
 
