@@ -2,11 +2,20 @@
 
 namespace Http\controllers;
 use Core\App;
-use Core\Validator;
 use Core\Database;
+use Core\Validator;
+use Http\Notes\NoteFactory;
 
 class NotesController
 {
+
+    private $notes;
+
+    public function __construct()
+    {
+        $this->notes = NoteFactory::create();
+    }
+
     private function db()
     {
         return App::resolve(Database::class);
