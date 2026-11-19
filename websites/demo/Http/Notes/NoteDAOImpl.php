@@ -15,7 +15,11 @@ class NoteDaoImpl implements NoteDaoInterface
 
     public function allByUserId($userId)
     {
-
+        return $this->db->query(
+            'SELECT * FROM notes WHERE user_id = :user_id', [
+                'user_id' => $userId
+                ]
+            )->get();
     }
     
     public function findById($id)
