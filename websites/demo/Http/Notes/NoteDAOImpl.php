@@ -44,7 +44,14 @@ class NoteDaoImpl implements NoteDaoInterface
 
     public function update($id, $userId, $body)
     {
-
+        $this->db->query(
+            'UPDATE notes SET body = :body WHERE id = :id AND user_id = :user_id',
+            [
+                'id' => $id,
+                'user_id' => $userId,
+                'body' => $body
+            ]
+        );
     }
 
     public function delete($id, $userId)
