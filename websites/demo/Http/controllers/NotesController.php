@@ -32,8 +32,7 @@ class NotesController
             'id' => $_GET['id']
         ])->findOrFail();
 
-        //TODO: acordarse de esto
-        //authorize($note['user_id'] === $currentUserId);
+        authorize($note['user_id'] === $currentUserId);
 
         view("notes/show.view.php", [
             'heading' => 'Notes',
@@ -81,8 +80,7 @@ class NotesController
             'id' => $_GET['id']
         ])->findOrFail();
 
-        //TODO: acordarse de esto
-        //authorize($note['user_id'] === $currentUserId);
+        authorize($note['user_id'] === $currentUserId);
 
         view("notes/edit.view.php", [
             'heading' => 'Edit Note',
@@ -99,8 +97,7 @@ class NotesController
             'id' => $_POST['id']
         ])->findOrFail();
 
-        //TODO: acordarse de esto
-        //authorize($note['user_id'] === $currentUserId);
+        authorize($note['user_id'] === $currentUserId);
 
         $errors = [];
 
@@ -133,8 +130,7 @@ class NotesController
             'id' => $_POST['id']
         ])->findOrFail();
 
-        //TODO: acordarse de esto
-        //authorize($note['user_id'] === $currentUserId);
+        authorize($note['user_id'] === $currentUserId);
 
         $this->db()->query('DELETE FROM notes WHERE id = :id', [
             'id' => $_POST['id']
