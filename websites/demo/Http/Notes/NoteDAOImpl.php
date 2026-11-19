@@ -1,5 +1,7 @@
 <?php
 
+namespace Http\Notes;
+
 class NoteDaoImpl implements NoteDaoInterface
 {
     public function allByUserId($userId)
