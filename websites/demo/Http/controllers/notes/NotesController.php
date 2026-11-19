@@ -121,4 +121,23 @@ class NotesController
         header('location: /notes');
         die();
     }
+
+    public function destroy()
+    {
+        $currentUserId = 1;
+
+        $note = $this->db()->query('SELECT * FROM notes where id = :id', [
+            'id' => $_POST['id']
+        ])->findOrFail();
+
+        //TODO: acordarse de esto
+        //authorize($note['user_id'] === $currentUserId);
+
+        $this->db()->query('DELETE FROM notes WHERE id = :id', [
+            'id' => $_POST['id']
+        ]);
+
+        header('location: /notes');
+        exit();
+    }
 }
