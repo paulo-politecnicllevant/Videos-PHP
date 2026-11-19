@@ -24,7 +24,11 @@ class NoteDaoImpl implements NoteDaoInterface
     
     public function findById($id)
     {
-
+        return $this->db->query(
+            'SELECT * FROM notes WHERE id = :id', [
+                'id' => $id
+                ]
+        )->findOrFail();
     }
 
     public function create($body, $userId)
