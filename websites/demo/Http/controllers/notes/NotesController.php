@@ -29,6 +29,7 @@ class NotesController
             'id' => $_GET['id']
         ])->findOrFail();
 
+        //TODO: acordarse de esto
         //authorize($note['user_id'] === $currentUserId);
 
         view("notes/show.view.php", [
@@ -67,5 +68,23 @@ class NotesController
 
         header('location: /notes');
         die();
+    }
+
+    public function edit()
+    {
+        $currentUserId = 1;
+
+        $note = $this->db()->query('select * from notes where id = :id', [
+            'id' => $_GET['id']
+        ])->findOrFail();
+
+        //TODO: acordarse de esto
+        //authorize($note['user_id'] === $currentUserId);
+
+        view("notes/edit.view.php", [
+            'heading' => 'Edit Note',
+            'errors' => [],
+            'note' => $note
+        ]);
     }
 }
