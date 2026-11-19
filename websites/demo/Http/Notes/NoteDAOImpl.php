@@ -1,9 +1,18 @@
 <?php
 
 namespace Http\Notes;
+use Core\Database;
 
 class NoteDaoImpl implements NoteDaoInterface
 {
+
+    private $db;
+
+    public function __construct(Database $db)
+    {
+        $this->db = $db;
+    }
+
     public function allByUserId($userId)
     {
 
