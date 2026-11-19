@@ -36,4 +36,12 @@ class NotesController
             'note' => $note
         ]);
     }
+
+    public function create()
+    {
+        view("notes/create.view.php", [
+            'heading' => 'Create Note',
+            'errors' => []
+        ]);
+    }
 }
