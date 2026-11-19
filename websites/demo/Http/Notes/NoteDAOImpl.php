@@ -3,7 +3,7 @@
 namespace Http\Notes;
 use Core\Database;
 
-class NoteDaoImpl implements NoteDaoInterface
+class NoteDAOImpl implements NoteDAOInterface
 {
 
     private $db;
