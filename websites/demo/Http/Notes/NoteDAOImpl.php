@@ -33,7 +33,13 @@ class NoteDaoImpl implements NoteDaoInterface
 
     public function create($body, $userId)
     {
-
+        $this->db->query(
+            'INSERT INTO notes(body, user_id) VALUES(:body, :user_id)',
+            [
+                'body' => $body,
+                'user_id' => $userId
+            ]
+        );
     }
 
     public function update($id, $userId, $body)
